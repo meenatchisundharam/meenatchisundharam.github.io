@@ -292,10 +292,10 @@
 <script src="https://smtpjs.com/v3/smtp.js"></script>
 <script>
     function contactMe() {
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let subject = document.getElementById('subject').value;
+        let message = document.getElementById('message').value;
 
         Email.send({
             Host: "smtp.elasticemail.com",
