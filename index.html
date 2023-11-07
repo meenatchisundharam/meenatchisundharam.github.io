@@ -279,50 +279,17 @@
 
                 <div class="col-lg-6">
                     <!-- form fields -->
-                    <form id="contactForm">
-    <input type="text" class="form-control form-control-lg" placeholder="Name" id="name">
-    <input type="email" class="form-control mt-3" placeholder="Email" id="email">
-    <input type="text" class="form-control mt-3" placeholder="Subject" id ="subject">
-    <div class="mb-3 mt-3">
-        <textarea class="form-control" rows="5" id="message" placeholder="Project Details"></textarea>
-    </div>
-    <button type="button" class="btn btn-success mt-3" onclick="contactMe()">Contact Me</button>
-</form>
-
-<script src="https://smtpjs.com/v3/smtp.js"></script>
-<script>
-    function contactMe() {
-        let name = document.getElementById('name').value;
-        let email = document.getElementById('email').value;
-        let subject = document.getElementById('subject').value;
-        let message = document.getElementById('message').value;
-
-        Email.send({
-            Host: "smtp.elasticemail.com",
-            Username: "sundharmadhim@gmail.com",
-            Password: "74B41D3A06829DDDCF3045314100F0743E05",
-            To: 'sundharmadhim@gmail.com',
-            From: 'sundharmadhim@gmail.com', // Corrected this line
-            Subject: subject,
-            Body: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-        }).then(
-            message => {
-                alert('Email sent successfully');
-                // Optionally, clear the form fields
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('subject').value = '';
-                document.getElementById('message').value = '';
-            },
-            error => {
-                alert('Email could not be sent: ' + error);
-            }
-        );
-    }
-</script>
-                    
+                    <form id="contactForm" onsubmit="return false;">
+        <input type="text" class="form-control form-control-lg" placeholder="Name" id="name" onkeyup="validateForm()">
+        <input type="email" class="form-control mt-3" placeholder="Email" id="email" onkeyup="validateForm()">
+        <input type="text" class="form-control mt-3" placeholder="Subject" id="subject" onkeyup="validateForm()">
+        <div class="mb-3 mt-3">
+            <textarea class="form-control" rows="5" id="message" placeholder="Project Details" onkeyup="validateForm()"></textarea>
+        </div>
+        <button type="button" class="btn btn-success mt-3" id="contactMeButton" onclick="sendEmail()" disabled>Contact Me</button>
+    </form>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>                    
                 </div>
-
             </div>
         </div>
     </section>
