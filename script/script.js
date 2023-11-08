@@ -48,6 +48,7 @@ function sendEmail() {
             document.getElementById('email').value = '';
             document.getElementById('subject').value = '';
             document.getElementById('message').value = '';
+            window.location.reload();
         },
         error => {
             alert('Email could not be sent: ' + error);
